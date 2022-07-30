@@ -1,0 +1,3 @@
+[Path]
+PathChanged=/etc/ufw/user.rules
+Unit=rebuild-split-gateway.service

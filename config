@@ -1,0 +1,2 @@
+OPENED_PORTS_FILE='/etc/split-gateway/ports'
+REGEX_IFACE_EXPLICIT=true
