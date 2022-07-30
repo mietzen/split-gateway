@@ -41,6 +41,8 @@ systemctl enable init-split-gateway.service
 systemctl enable rebuild-split-gateway.path
 systemctl enable rebuild-split-gateway.service
 
-systemctl start init-split-gateway.service
+echo "Review /etc/split-gateway/config, if everything is fine,"
+echo "start with:"
+echo "sudo systemctl start init-split-gateway.service"
 
 exit 0
