@@ -29,7 +29,7 @@ function rebuild_split_gateway {
     for line in ${OPENED_PORTS_NEW}; do
         echo ${line} >> ${OPENED_PORTS_FILE}
         IFS="/" read -r PORT PROTOCOL <<< ${line}
-        echo iptables -t mangle -A OUTPUT ! -d ${NETWORK} -p ${PROTOCOL} --sport ${PORT} -j MARK --set-mark 1 -m comment --comment 'Split-Gateway'
+        iptables -t mangle -A OUTPUT ! -d ${NETWORK} -p ${PROTOCOL} --sport ${PORT} -j MARK --set-mark 1 -m comment --comment 'Split-Gateway'
     done
 }
 
