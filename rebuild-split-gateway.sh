@@ -6,7 +6,7 @@ source /etc/split-gateway/config
 if [ $1 = "init" ]; then
     OPENED_PORTS_OLD=''
 else
-    OPENED_PORTS_OLD=$(cat ${OPENED_PORTS_FILE} || '')
+    OPENED_PORTS_OLD=$(cat "${OPENED_PORTS_FILE}" > /dev/null 2>&1 || echo '')
 fi
 
 if [ $REGEX_IFACE_EXPLICIT = false ]; then
@@ -15,9 +15,9 @@ else
     REGEX="^[[:digit:]]{1,5}/(tcp|udp) on ${EXTERNAL_INTERFACE} [[:space:]]* ALLOW [[:space:]]* Anywhere [[:space:]]*$" 
 fi
 
-OPENED_PORTS_NEW=$(ufw status | egrep ${REGEX} | cut -d' ' -f1)
+OPENED_PORTS_NEW=$(ufw status | egrep "${REGEX}" | cut -d' ' -f1)
 
-rebuild_split_gateway {
+function rebuild_split_gateway {
     rm -rf ${OPENED_PORTS_FILE}
 
     # Delete all 'Split-Gateway' rules
