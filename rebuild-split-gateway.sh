@@ -3,7 +3,7 @@
 # Get vars
 source /etc/split-gateway/config
 
-if [ $1 = "init" ]; then
+if [[ "$1" = "init" ]]; then
     OPENED_PORTS_OLD=''
 else
     OPENED_PORTS_OLD=$(cat "${OPENED_PORTS_FILE}" > /dev/null 2>&1 || echo '')
@@ -21,8 +21,9 @@ function rebuild_split_gateway {
     rm -rf ${OPENED_PORTS_FILE}
 
     # Delete all 'Split-Gateway' rules
-    for rule in $(iptables -t mangle -L --line-numbers | grep Split-Gateway | cut -d' ' -f1); do
-        iptables -t mangle -D OUTPUT ${rule}
+    rules=$(iptables -t mangle -L --line-numbers | grep Split-Gateway | cut -d' ' -f1)
+    for ((i=${#rules[@]}-1; i>=0; i--)); do
+        iptables -t mangle -D OUTPUT "${rules[$i]}"
     done
 
     # Import all rules from UFW
