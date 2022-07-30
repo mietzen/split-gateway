@@ -22,7 +22,7 @@ function rebuild_split_gateway {
 
     # Delete all 'Split-Gateway' rules
     for rule in $(iptables -t mangle -L --line-numbers | grep Split-Gateway | cut -d' ' -f1); do
-        iptables -t mangle -D ${rule}
+        iptables -t mangle -D OUTPUT ${rule}
     done
 
     # Import all rules from UFW
