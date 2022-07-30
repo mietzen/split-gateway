@@ -6,7 +6,7 @@ source /etc/split-gateway/config
 if [[ "$1" = "init" ]]; then
     OPENED_PORTS_OLD=''
 else
-    OPENED_PORTS_OLD=$(cat "${OPENED_PORTS_FILE}" > /dev/null 2>&1 || echo '')
+    OPENED_PORTS_OLD=$(cat "${OPENED_PORTS_FILE}" 2>/dev/null || echo '')
 fi
 
 if [ $REGEX_IFACE_EXPLICIT = false ]; then
