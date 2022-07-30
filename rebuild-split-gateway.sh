@@ -21,9 +21,8 @@ function rebuild_split_gateway {
     rm -rf ${OPENED_PORTS_FILE}
 
     # Delete all 'Split-Gateway' rules
-    rules=$(iptables -t mangle -L --line-numbers | grep Split-Gateway | cut -d' ' -f1)
-    for ((i=${#rules[@]}-1; i>=0; i--)); do
-        iptables -t mangle -D OUTPUT "${rules[$i]}"
+    for rule in $(iptables -t mangle -L --line-numbers | grep Split-Gateway | cut -d' ' -f1 | sort -r); do
+        iptables -t mangle -D OUTPUT ${rule}
     done
 
     # Import all rules from UFW
