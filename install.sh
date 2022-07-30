@@ -34,7 +34,9 @@ chmod +x /etc/split-gateway/rebuild-split-gateway.sh
 
 cp ./init-split-gateway.service /etc/systemd/system/init-split-gateway.service
 
-cp ./rebuild-split-gateway.path /etc/systemd/system/rebuild-split-gateway.path
+cp ./watcher-split-gateway.path /etc/systemd/system/watcher-split-gateway.path
+cp ./watcher-split-gateway.service /etc/systemd/system/watcher-split-gateway.service
+
 cp ./rebuild-split-gateway.service /etc/systemd/system/rebuild-split-gateway.service
 
 systemctl enable init-split-gateway.service
