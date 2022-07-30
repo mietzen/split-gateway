@@ -33,7 +33,7 @@ function rebuild_split_gateway {
     done
 }
 
-if [ ${OPENED_PORTS_NEW} != ${OPENED_PORTS_OLD} ]; then
+if [ "${OPENED_PORTS_NEW}" != "${OPENED_PORTS_OLD}" ]; then
     rebuild_split_gateway
 fi
 

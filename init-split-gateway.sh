@@ -2,7 +2,7 @@
 
 source /etc/split-gateway/config
 
-if ! grep -Fxq "101 split_gateway" my_list.txt; then
+if ! grep -Fxq "101 split_gateway" /etc/iproute2/rt_tables; then
     echo "101 split_gateway" >> /etc/iproute2/rt_tables
 fi
 ip route add default table split_gateway via ${EXTERNAL_GATEWAY}
