@@ -15,7 +15,7 @@ fi
 echo "EXTERNAL_INTERFACE='${EXTERNAL_INTERFACE}'" >> /etc/split-gateway/config
 
 if [[ -z "${EXTERNAL_GATEWAY}" ]]; then 
-    EXTERNAL_GATEWAY=$(ip route | grep ${EXTERNAL_GATEWAY} | cut -d' ' -f1 | cut -d'/' -f1 | sed 's/.$/1/')
+    EXTERNAL_GATEWAY=$(ip route | grep ${EXTERNAL_INTERFACE} | cut -d' ' -f1 | cut -d'/' -f1 | sed 's/.$/1/')
     echo "External gateway not set, guessed gateway: ${EXTERNAL_GATEWAY}"
 fi
 echo "EXTERNAL_GATEWAY='${EXTERNAL_GATEWAY}'" >> /etc/split-gateway/config
