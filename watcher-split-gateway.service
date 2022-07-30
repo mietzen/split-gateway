@@ -1,0 +1,10 @@
+[Unit]
+Description=rebuild-split-gateway.service restarter
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl restart rebuild-split-gateway.service
+
+[Install]
+WantedBy=multi-user.target

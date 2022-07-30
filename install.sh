@@ -38,8 +38,7 @@ cp ./rebuild-split-gateway.path /etc/systemd/system/rebuild-split-gateway.path
 cp ./rebuild-split-gateway.service /etc/systemd/system/rebuild-split-gateway.service
 
 systemctl enable init-split-gateway.service
-systemctl enable rebuild-split-gateway.path
-systemctl enable rebuild-split-gateway.service
+systemctl enable watcher-split-gateway.path
 
 echo "Review /etc/split-gateway/config, if everything is fine,"
 echo "start with:"

@@ -6,7 +6,7 @@ Wants=network-online.target
 [Service]
 Type=oneshot
 ExecStart=/bin/bash /etc/split-gateway/init-split-gateway.sh
-ExecStartPost=/bin/bash /etc/split-gateway/rebuild-split-gateway.sh init
+ExecStartPost=/usr/bin/systemctl reload rebuild-split-gateway.service
 
 [Install]
 WantedBy=multi-user.target
