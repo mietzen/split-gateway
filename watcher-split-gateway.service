@@ -1,10 +1,10 @@
 [Unit]
-Description=rebuild-split-gateway.service restarter
+Description=reload split-gateway.service if UFW rules are chnaged
 After=network.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/systemctl restart rebuild-split-gateway.service
+ExecStart=/usr/bin/systemctl reload split-gateway.service
 
 [Install]
 WantedBy=multi-user.target

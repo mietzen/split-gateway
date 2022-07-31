@@ -26,24 +26,19 @@ if [[ -z "${NETWORK}" ]]; then
 fi
 echo "NETWORK='${NETWORK}'" >> /etc/split-gateway/config
 
-cp ./init-split-gateway.sh /etc/split-gateway/init-split-gateway.sh
-chmod +x /etc/split-gateway/init-split-gateway.sh
+cp ./split-gateway.sh /usr/bin/split-gateway
+chmod +x /usr/bin/split-gateway
 
-cp ./rebuild-split-gateway.sh /etc/split-gateway/rebuild-split-gateway.sh
-chmod +x /etc/split-gateway/rebuild-split-gateway.sh
-
-cp ./init-split-gateway.service /etc/systemd/system/init-split-gateway.service
+cp ./split-gateway.service /etc/systemd/system/split-gateway.service
 
 cp ./watcher-split-gateway.path /etc/systemd/system/watcher-split-gateway.path
 cp ./watcher-split-gateway.service /etc/systemd/system/watcher-split-gateway.service
 
-cp ./rebuild-split-gateway.service /etc/systemd/system/rebuild-split-gateway.service
-
-systemctl enable init-split-gateway.service
+systemctl enable split-gateway.service
+systemctl enable watcher-split-gateway.service
 systemctl enable watcher-split-gateway.path
 
 echo "Review /etc/split-gateway/config, if everything is fine,"
 echo "start with:"
-echo "sudo systemctl start init-split-gateway.service"
-
+echo "sudo systemctl start split-gateway watcher-split-gateway.{path,service}"
 exit 0
