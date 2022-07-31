@@ -1,9 +1,9 @@
-# **⚠️ Beware this service will expose ports from your local network to the internet. I'm not responsible for your improvidence! ⚠️**
-
+## **⚠️ Beware this service will expose ports from your local network to the internet. I'm not responsible for your improvidence! ⚠️**
+­
 # Split-Gateway
 
 ## **TL:DR**
-This service splits your traffic between a default gateway and a external gateway. It will auto-detect services via ufw rules and set/delete the rules accordingly.
+This service splits your traffic between a default gateway and a external gateway. It will auto-detect services via `ufw` and set/delete the routes accordingly.
 
 Install on Debian 10:
 ```
@@ -27,13 +27,13 @@ Content:
 ## The Problem
 Usual all my traffic is routed through a VPN via a VPN Gateway (OpenWRT Router), I now wanted to operate different services on a server in my network and expose the service ports via my normal ISP Router.
 
-Basically this what I wanted:
+### **What I wanted:**
 ![What I wanted](assets/wanted.png)
 
-But this is what I got:
+### **What I got:**
 ![What I got](assets/got.png)
 
-UPD packages could reach the service, but no TCP packages, generally speaking the service couldn't answer. THis is because the default route is applied for all packages so all outgoing packages where sent over the VPN Gateway and where lost.
+UPD packages could reach the service, but no TCP packages, generally speaking the service couldn't answer. This is because the default route is applied for all packages so all outgoing packages where sent over the VPN Gateway and where lost.
 
 ## The Solution
 
